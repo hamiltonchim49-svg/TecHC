@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoHC - Servicios Técnicos y Digitales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Paleta más formal y minimalista */
+            --primary: #0F172A;    /* Azul pizarra muy oscuro */
+            --accent: #2563EB;     /* Azul profesional */
+            --secondary: #1E293B;  /* Gris pizarra oscuro */
+            --light-bg: #F8FAFC;   /* Fondo muy claro */
+            --text-dark: #334155;  /* Texto principal */
+            --text-light: #64748B; /* Texto secundario */
+            --border: #E2E8F0;     /* Bordes suaves */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: white;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #CBD5E1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 7rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #94A3B8;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            border: 1px solid var(--accent);
+        }
+
+        .cta-button:hover {
+            background: #1D4ED8; /* Azul más oscuro al pasar el mouse */
+            border-color: #1D4ED8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .services-container, .modalities-container, .products-container, .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 54px;
+            height: 54px;
+            background: var(--light-bg);
+            color: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* MODALITIES */
+        .modalities {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+        }
+
+        .modalities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .modality-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .modality-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .modality-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--light-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .modality-box p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* PRODUCTS */
+        .products {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .product-badge {
+            background: var(--light-bg);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .product-badge:hover {
+            border-color: var(--accent);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* GALERÍA */
+        .gallery {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .item-overlay {
+            opacity: 1;
+        }
+
+        .item-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* CTA FINAL */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: #CBD5E1;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: #CBD5E1;
+        }
+
+        .contact-method a {
+            color: #CBD5E1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-method a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            color: #64748B;
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero .subtitle {
+                font-size: 1.05rem;
+            }
+            nav ul {
+                display: none; /* Idealmente aquí iría un menú hamburguesa */
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .footer-contact {
+                gap: 1.5rem;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">⚙️</div>
+                <span>TecnoHC</span>
+            </div>
+            <ul>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#modalidades">Modalidades</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Soluciones Técnicas Integrales</h1>
+            <p class="subtitle">Reparación de equipos, desarrollo web, soluciones de software y licencias</p>
+            <a href="#contacto" class="cta-button">Solicitar Servicio</a>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="services" id="servicios">
+        <div class="services-container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="section-subtitle">Cobertura completa en tecnología y mantenimiento</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Desarrollo Web</h3>
+                    <p>Creación de páginas web para invitaciones, tareas académicas, portafolios y sitios de empresas. Diseños modernos, elegantes y completamente adaptables.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🖥️</div>
+                    <h3>Reparación de Computadoras</h3>
+                    <p>Diagnóstico completo, cambio de componentes, actualización de sistema operativo y optimización de rendimiento.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Reparación de Laptops</h3>
+                    <p>Limpieza de sistemas de refrigeración, cambio de disco duro, reparación de pantalla, batería y componentes internos.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Soluciones de Hardware</h3>
+                    <p>Diagnóstico y reparación de problemas de hardware, cambio de memoria RAM, fuentes de poder y componentes dañados.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Soluciones de Software</h3>
+                    <p>Eliminación de virus, optimización del sistema, instalación de programas, recuperación de datos y configuración.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🖨️</div>
+                    <h3>Reparación de Impresoras</h3>
+                    <p>Mantenimiento preventivo, reparación de hardware, reemplazo de piezas y solución de problemas de impresión.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALIDADES DE SERVICIO -->
+    <section class="modalities" id="modalidades">
+        <div class="modalities-container">
+            <h2 class="section-title">Modalidades de Trabajo</h2>
+            <p class="section-subtitle">Flexibilidad para atender tus necesidades corporativas y personales</p>
+            
+            <div class="modalities-grid">
+                <div class="modality-box">
+                    <h3>
+                        <div class="modality-icon">🏢</div>
+                        <span>Taller Fijo</span>
+                    </h3>
+                    <p>Reparación y diagnóstico profundo con herramientas especializadas en nuestro taller principal. Ideal para problemas complejos que requieren análisis detallado.</p>
+                </div>
+
+                <div class="modality-box">
+                    <h3>
+                        <div class="modality-icon">🚗</div>
+                        <span>Recogida y Transporte</span>
+                    </h3>
+                    <p>Nos desplazamos a un lugar acordado para recoger tu equipo. Lo trasladamos a nuestro taller para trabajarlo, garantizando máxima calidad en la reparación.</p>
+                </div>
+
+                <div class="modality-box">
+                    <h3>
+                        <div class="modality-icon">📱</div>
+                        <span>Asistencia en Sitio</span>
+                    </h3>
+                    <p>Para trabajos específicos que lo ameritan, nos desplazamos con equipo técnico especializado para resolver problemas directamente en tus instalaciones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LICENCIAS -->
+    <section class="products">
+        <div class="products-container">
+            <h2 class="section-title">Licencias Digitales</h2>
+            <p class="section-subtitle">Software original y asesoramiento profesional</p>
+            
+            <div class="products-grid">
+                <div class="product-badge">Windows 7, 10, 11</div>
+                <div class="product-badge">Microsoft Office 2016+</div>
+                <div class="product-badge">Microsoft 365</div>
+                <div class="product-badge">Asesoría Legal de Software</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE TRABAJO -->
+    <section class="gallery" id="galeria">
+        <div class="gallery-container">
+            <h2 class="section-title">Nuestra Labor en Imágenes</h2>
+            <p class="section-subtitle">Evidencia de nuestro trabajo profesional y especializado</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="image_0.png" alt="Interior de una computadora HP con la placa base visible, mostrando el proceso de reparación de hardware.">
+                    <div class="item-overlay">
+                        <h3>Diagnóstico Preciso</h3>
+                        <p>Visión experta de los componentes internos para una reparación efectiva.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="image_1.png" alt="Computadora HP y caja de herramientas DeWalt en el maletero de un vehículo CR-V, listo para el servicio técnico a domicilio.">
+                    <div class="item-overlay">
+                        <h3>Servicio Móvil</h3>
+                        <p>Listo para atender tus necesidades tecnológicas en cualquier lugar.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="image_2.png" alt="Captura de pantalla de CrystalDiskInfo mostrando 'Bueno' para un disco duro Western Digital, como parte de la optimización del sistema.">
+                    <div class="item-overlay">
+                        <h3>Análisis de Salud</h3>
+                        <p>Monitoreo del estado del disco duro para prevenir pérdida de datos.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="image_3.png" alt="Técnico de TecnoHC con mascarilla, gafas de seguridad y guantes negros haciendo el signo de la paz, demostrando un enfoque profesional y seguro.">
+                    <div class="item-overlay">
+                        <h3>Profesional Certificado</h3>
+                        <p>Compromiso con la seguridad y la excelencia en cada intervención.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-section" id="contacto">
+        <div class="cta-section-content">
+            <h2>¿Necesitas Asistencia Técnica o un Proyecto Web?</h2>
+            <p>Contáctanos hoy para recibir asesoramiento profesional y una cotización sin compromiso.</p>
+            <a href="mailto:hamiltonchim49@gmail.com" class="cta-button">Enviar Mensaje</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-contact">
+                <div class="contact-method">
+                    <span>📧</span>
+                    <span><a href="mailto:hamiltonchim49@gmail.com">hamiltonchim49@gmail.com</a></span>
+                </div>
+                <div class="contact-method">
+                    <span>📱</span>
+                    <span><a href="tel:+50236278227">+502 3627-8227</a></span>
+                </div>
+                <div class="contact-method">
+                    <span>📍</span>
+                    <span>Guatemala - Taller en la 6ta Avenida, Zona 1</span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TecnoHC - Servicios Técnicos. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
