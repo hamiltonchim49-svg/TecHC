@@ -12,7 +12,7 @@
         }
 
         :root {
-            /* Paleta más formal y minimalista */
+            /* Paleta formal y elegante */
             --primary: #0F172A;    /* Azul pizarra muy oscuro */
             --accent: #2563EB;     /* Azul profesional */
             --secondary: #1E293B;  /* Gris pizarra oscuro */
@@ -92,7 +92,7 @@
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 7rem 2rem;
+            padding: 6rem 2rem;
             text-align: center;
         }
 
@@ -130,10 +130,96 @@
         }
 
         .cta-button:hover {
-            background: #1D4ED8; /* Azul más oscuro al pasar el mouse */
+            background: #1D4ED8;
             border-color: #1D4ED8;
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+
+        /* PERFIL DEL TÉCNICO (NUEVA SECCIÓN DESTACADA) */
+        .technician-section {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .technician-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            align-items: center;
+        }
+
+        .technician-image-wrapper {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            background: #000;
+            position: relative;
+        }
+
+        .technician-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .technician-info {
+            padding: 3rem 2.5rem;
+        }
+
+        .technician-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .technician-info h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .technician-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .technician-highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .technician-highlights li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .technician-highlights li span {
+            color: var(--accent);
+            font-weight: bold;
         }
 
         /* SERVICES */
@@ -142,7 +228,7 @@
             background: white;
         }
 
-        .services-container, .modalities-container, .products-container, .gallery-container {
+        .services-container, .modalities-container, .products-container {
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -287,62 +373,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        /* GALERÍA */
-        .gallery {
-            padding: 5rem 2rem;
-            background: var(--light-bg);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: white;
-            padding: 1.5rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gallery-item:hover .item-overlay {
-            opacity: 1;
-        }
-
-        .item-overlay h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .item-overlay p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
         /* CTA FINAL */
         .cta-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -416,6 +446,15 @@
         }
 
         /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .technician-container {
+                grid-template-columns: 1fr;
+            }
+            .technician-image-wrapper {
+                min-height: 320px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.2rem;
@@ -424,7 +463,7 @@
                 font-size: 1.05rem;
             }
             nav ul {
-                display: none; /* Idealmente aquí iría un menú hamburguesa */
+                display: none;
             }
             .section-title {
                 font-size: 1.8rem;
@@ -446,9 +485,9 @@
                 <span>TecnoHC</span>
             </div>
             <ul>
+                <li><a href="#tecnico">El Técnico</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#modalidades">Modalidades</a></li>
-                <li><a href="#galeria">Galería</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -460,6 +499,27 @@
             <h1>Soluciones Técnicas Integrales</h1>
             <p class="subtitle">Reparación de equipos, desarrollo web, soluciones de software y licencias</p>
             <a href="#contacto" class="cta-button">Solicitar Servicio</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DEL TÉCNICO ESPACIALIZADO (ÚNICA FOTO) -->
+    <section class="technician-section" id="tecnico">
+        <div class="technician-container">
+            <div class="technician-image-wrapper">
+                <img src="1000584172.heic" alt="Técnico especialista de TecnoHC preparado para servicio técnico">
+            </div>
+            <div class="technician-info">
+                <span class="technician-badge">Servicio Garantizado</span>
+                <h2>Atención Profesional & Personalizada</h2>
+                <p>Cada equipo informático es diagnosticado y tratado con los más estrictos protocolos de bioseguridad, cuidado técnico y herramientas profesionales para garantizar un servicio de máxima calidad.</p>
+                
+                <ul class="technician-highlights">
+                    <li><span>✓</span> Trabajo técnico meticuloso y seguro</li>
+                    <li><span>✓</span> Protocolos de limpieza e higiene profunda</li>
+                    <li><span>✓</span> Diagnóstico honesto y transparencia en repuestos</li>
+                    <li><span>✓</span> Atención directa sin intermediarios</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -558,45 +618,6 @@
         </div>
     </section>
 
-    <!-- GALERÍA DE TRABAJO -->
-    <section class="gallery" id="galeria">
-        <div class="gallery-container">
-            <h2 class="section-title">Nuestra Labor en Imágenes</h2>
-            <p class="section-subtitle">Evidencia de nuestro trabajo profesional y especializado</p>
-            
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="image_0.png" alt="Interior de una computadora HP con la placa base visible, mostrando el proceso de reparación de hardware.">
-                    <div class="item-overlay">
-                        <h3>Diagnóstico Preciso</h3>
-                        <p>Visión experta de los componentes internos para una reparación efectiva.</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="image_1.png" alt="Computadora HP y caja de herramientas DeWalt en el maletero de un vehículo CR-V, listo para el servicio técnico a domicilio.">
-                    <div class="item-overlay">
-                        <h3>Servicio Móvil</h3>
-                        <p>Listo para atender tus necesidades tecnológicas en cualquier lugar.</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="image_2.png" alt="Captura de pantalla de CrystalDiskInfo mostrando 'Bueno' para un disco duro Western Digital, como parte de la optimización del sistema.">
-                    <div class="item-overlay">
-                        <h3>Análisis de Salud</h3>
-                        <p>Monitoreo del estado del disco duro para prevenir pérdida de datos.</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="image_3.png" alt="Técnico de TecnoHC con mascarilla, gafas de seguridad y guantes negros haciendo el signo de la paz, demostrando un enfoque profesional y seguro.">
-                    <div class="item-overlay">
-                        <h3>Profesional Certificado</h3>
-                        <p>Compromiso con la seguridad y la excelencia en cada intervención.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA FINAL -->
     <section class="cta-section" id="contacto">
         <div class="cta-section-content">
@@ -624,9 +645,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 TecnoHC - Servicios Técnicos. Todos los derechos reservados.</p>
+                <p>&copy; 2026 TecnoHC - Servicios Técnicos. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+</body>
+</html>
 </body>
 </html>
